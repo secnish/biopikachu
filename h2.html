@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manish 🐳</title>
+  <meta name="description" content="I find what others miss." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg-2:#0a1630;
+      --panel:rgba(15,25,50,.72);
+      --panel-2:rgba(20,33,66,.88);
+      --soft:#aab7dd;
+      --text:#eef4ff;
+      --line:rgba(255,255,255,0.09);
+      --brand:#6ea8fe;
+      --brand-2:#72f1c8;
+      --brand-3:#b38cff;
+      --accent:#ffd166;
+      --glow:0 0 40px rgba(110,168,254,.18);
+      --shadow:0 18px 50px rgba(0,0,0,.28);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(114,241,200,.12), transparent 18%),
+        radial-gradient(circle at 88% 12%, rgba(179,140,255,.12), transparent 20%),
+        radial-gradient(circle at 50% 35%, rgba(110,168,254,.08), transparent 25%),
+        linear-gradient(180deg,#060c18 0%,#08111f 45%,#0a1630 100%);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size:34px 34px;
+      mask-image:radial-gradient(circle at center, black 45%, transparent 95%);
+      z-index:-1;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1180px,92vw);margin:0 auto}
+    .section{padding:88px 0;position:relative}
+    .section-title{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:clamp(2rem,3vw,3rem);
+      margin-bottom:12px;
+      letter-spacing:-0.03em;
+    }
+    .section-subtitle{color:var(--soft);max-width:780px;margin-bottom:34px}
+
+    .nav-wrap{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(6,12,24,.62);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      min-height:76px;gap:18px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:800;
+      font-family:"Space Grotesk",sans-serif;font-size:1.1rem;
+    }
+    .brand-badge{
+      width:44px;height:44px;border-radius:16px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2),var(--brand-3));
+      color:#08111f;font-weight:800;
+      box-shadow:var(--shadow), var(--glow);
+      animation:floatBadge 4.5s ease-in-out infinite;
+    }
+    .nav-links{display:flex;gap:12px;flex-wrap:wrap}
+    .nav-links a{
+      color:var(--soft);font-weight:600;font-size:.94rem;
+      padding:10px 14px;border-radius:14px;transition:.25s;
+      position:relative;
+    }
+    .nav-links a:hover{
+      background:rgba(255,255,255,.05);color:var(--text);transform:translateY(-1px)
+    }
+
+    .hero{padding:82px 0 32px;position:relative}
+    .hero::before,.hero::after{
+      content:"";position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;z-index:-1;
+    }
+    .hero::before{width:240px;height:240px;left:-40px;top:0;background:rgba(110,168,254,.18)}
+    .hero::after{width:220px;height:220px;right:-20px;top:50px;background:rgba(114,241,200,.14)}
+    .hero-grid{
+      display:grid;grid-template-columns:1.3fr .9fr;gap:28px;align-items:center;
+    }
+    .hero-card,.glass{
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+    .hero-card{padding:38px;position:relative;overflow:hidden}
+    .hero-card::before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(115deg,transparent,rgba(255,255,255,.04),transparent);
+      transform:translateX(-100%);
+      animation:shine 7s linear infinite;
+      pointer-events:none;
+    }
+    .eyebrow{
+      display:inline-flex;gap:8px;align-items:center;
+      background:rgba(110,168,254,.14);color:#d7e6ff;
+      border:1px solid rgba(110,168,254,.18);
+      padding:9px 14px;border-radius:999px;
+      font-size:.88rem;font-weight:700;margin-bottom:18px;
+      box-shadow:var(--glow);
+    }
+    h1{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:clamp(2.7rem,5vw,5rem);
+      line-height:1.01;
+      margin-bottom:16px;
+      letter-spacing:-0.04em;
+    }
+    .hero p{color:var(--soft);font-size:1.05rem}
+    .hero-strong{color:var(--text);font-weight:700}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
+    .btn{
+      border:none;cursor:pointer;
+      padding:14px 18px;border-radius:16px;
+      font-weight:700;font-size:.96rem;
+      transition:.25s ease;
+      display:inline-flex;align-items:center;gap:10px;
+      position:relative;overflow:hidden;
+    }
+    .btn::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(115deg,transparent,rgba(255,255,255,.18),transparent);
+      transform:translateX(-120%);
+      transition:.5s;
+    }
+    .btn:hover::after{transform:translateX(120%)}
+    .btn:hover{transform:translateY(-3px) scale(1.01)}
+    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#08111f;box-shadow:var(--glow)}
+    .btn-secondary{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--line)}
+
+    .hero-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+    .mini{
+      background:rgba(255,255,255,.04);border:1px solid var(--line);
+      border-radius:20px;padding:18px;transition:.25s ease;
+    }
+    .mini:hover{transform:translateY(-6px);box-shadow:var(--shadow),var(--glow)}
+    .mini h3{font-size:1.3rem;margin-bottom:6px}
+    .mini p{font-size:.92rem}
+
+    .profile-box{padding:28px;position:relative;overflow:hidden}
+    .profile-box::before{
+      content:"";position:absolute;inset:auto auto -40px -40px;
+      width:150px;height:150px;border-radius:50%;background:rgba(179,140,255,.14);filter:blur(10px)
+    }
+    .profile-box::after{
+      content:"";position:absolute;inset:auto -50px -50px auto;
+      width:170px;height:170px;border-radius:50%;
+      background:radial-gradient(circle,rgba(122,240,195,.20),transparent 65%);
+    }
+    .profile-img{
+      width:250px;height:250px;border-radius:28px;object-fit:cover;
+      border:1px solid rgba(255,255,255,.12);margin:0 auto 18px;
+      background:#0e1630;
+      box-shadow:0 18px 40px rgba(0,0,0,.28), 0 0 0 8px rgba(255,255,255,.03);
+      transition:.35s ease;
+    }
+    .profile-img:hover{transform:scale(1.03) rotate(-1deg)}
+    .tag-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .tag{
+      padding:9px 13px;border-radius:999px;font-size:.84rem;font-weight:700;
+      background:rgba(255,255,255,.055);border:1px solid var(--line);color:#dbe6ff;
+      transition:.22s ease;
+    }
+    .tag:hover{transform:translateY(-3px);background:rgba(110,168,254,.12)}
+    .profile-note{text-align:center;color:var(--soft);margin-top:14px}
+
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+    .stat,.card,.project-card,.certificate-card,.achievement-card,.timeline-item,.training-card,.about-card,.contact-card,.skill-card{
+      position:relative;overflow:hidden;transition:.28s ease;
+    }
+    .stat::before,.card::before,.project-card::before,.certificate-card::before,.achievement-card::before,.timeline-item::before,.training-card::before,.about-card::before,.contact-card::before,.skill-card::before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(255,255,255,.04),transparent 35%,transparent 65%,rgba(255,255,255,.02));
+      pointer-events:none;
+    }
+    .stat:hover,.card:hover,.project-card:hover,.certificate-card:hover,.achievement-card:hover,.timeline-item:hover,.training-card:hover,.about-card:hover,.contact-card:hover,.skill-card:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--shadow), var(--glow);
+      border-color:rgba(110,168,254,.22);
+    }
+    .stat{padding:24px;text-align:left}
+    .stat h3{font-size:2rem;font-family:"Space Grotesk",sans-serif;color:var(--brand-2)}
+    .stat p{color:var(--soft);font-size:.95rem}
+
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .card{padding:24px}
+    .card h3{font-size:1.15rem;margin-bottom:10px}
+    .card p{color:var(--soft)}
+
+    .skills-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .skill-card{padding:24px}
+    .skill-card ul{list-style:none;display:grid;gap:12px;margin-top:14px}
+    .skill-card li{
+      display:flex;align-items:center;gap:12px;
+      background:rgba(255,255,255,.03);border:1px solid var(--line);
+      padding:13px 14px;border-radius:16px;color:#dfe8ff;font-weight:600;
+      transition:.22s ease;
+    }
+    .skill-card li:hover{transform:translateX(6px);background:rgba(110,168,254,.08)}
+    .skill-card i{font-size:1.2rem;width:20px;text-align:center;color:var(--brand-2)}
+
+    .project-list,.certificate-list,.achievement-list,.timeline{display:grid;gap:18px}
+    .project-card,.certificate-card,.achievement-card,.timeline-item,.training-card,.about-card,.contact-card{padding:26px}
+    .card-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:12px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 12px;
+      border-radius:999px;background:rgba(255,209,102,.12);
+      border:1px solid rgba(255,209,102,.18);color:#ffe4a1;font-size:.82rem;font-weight:700;
+      white-space:nowrap;
+    }
+    .project-card ul,.training-card ul,.certificate-card ul,.about-list{margin-left:18px;color:var(--soft);display:grid;gap:8px}
+    .project-tech{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px}
+    .chip{
+      padding:8px 11px;border-radius:999px;background:rgba(110,168,254,.10);
+      color:#d5e5ff;border:1px solid rgba(110,168,254,.16);font-size:.84rem;font-weight:700;
+      display:inline-flex;align-items:center;gap:7px;
+      transition:.22s ease;
+    }
+    .chip:hover{transform:translateY(-3px);background:rgba(114,241,200,.10)}
+
+    .timeline{position:relative}
+    .timeline::before{
+      content:"";position:absolute;left:13px;top:4px;bottom:4px;width:2px;
+      background:linear-gradient(var(--brand),var(--brand-3),transparent);
+      box-shadow:var(--glow);
+    }
+    .timeline-item{position:relative;margin-left:32px}
+    .timeline-item::after{
+      content:"";position:absolute;left:-28px;top:28px;width:14px;height:14px;border-radius:50%;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 0 0 5px rgba(110,168,254,.10);
+    }
+    .timeline-date{color:#b8c9ef;font-size:.9rem;font-weight:700;margin-bottom:8px}
+
+    .contact-grid{display:grid;grid-template-columns:1fr .9fr;gap:20px}
+    .contact-links{display:grid;gap:12px;margin-top:16px}
+    .contact-link{
+      display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:16px;
+      border:1px solid var(--line);background:rgba(255,255,255,.03);color:#e6edff;font-weight:600;
+      transition:.24s ease;
+    }
+    .contact-link:hover{transform:translateX(6px);background:rgba(110,168,254,.08)}
+    .contact-link i{width:22px;text-align:center;font-size:1.1rem;color:var(--brand-2)}
+
+    .footer{padding:30px 0 60px;color:var(--soft);text-align:center}
+
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s ease}
+    .reveal.show{opacity:1;transform:translateY(0)}
+
+    @keyframes shine{
+      0%{transform:translateX(-120%)}
+      100%{transform:translateX(120%)}
+    }
+    @keyframes floatBadge{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-4px)}
+    }
+
+    @media (max-width:1000px){
+      .hero-grid,.grid-2,.contact-grid,.skills-wrap{grid-template-columns:1fr}
+      .stats,.hero-highlights{grid-template-columns:repeat(2,1fr)}
+      .nav{padding:12px 0}
+      .nav-links{display:none}
+    }
+    @media (max-width:640px){
+      .stats,.hero-highlights{grid-template-columns:1fr}
+      .hero-card,.profile-box,.card,.project-card,.certificate-card,.achievement-card,.timeline-item,.training-card,.about-card,.contact-card,.skill-card{padding:20px}
+      h1{font-size:2.6rem}
+      .profile-img{width:220px;height:220px}
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <nav class="nav container">
+      <a href="#top" class="brand">
+        <span class="brand-badge">💀</span>
+        <span>Manish</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Research</a>
+        <a href="#training">Experience</a>
+        <a href="#certificates">Licences</a>
+        <a href="#achievements">Disclosures</a>
+        <a href="#journey">Journey</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <header class="hero container reveal" id="top">
+    <div class="hero-grid">
+      <div class="hero-card glass">
+        <div class="eyebrow"><i class="fa-solid fa-shield-halved"></i></div>
+        <h1>Hi, I'm Manish</h1>
+        <p>
+          <!-- <span class="hero-strong">Content Engineering | Cloud Security | Security Operations</span> -->
+        </p>
+        <p style="margin-top:12px;">
+          I’m a Content Engineer at <span class="hero-strong">Pwned Labs</span>, focused on security operations, and research. I enjoy cooking up overlooked security gaps and approach problems with a GRC driven mindset.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects"><i class="fa-solid fa-diagram-project"></i> Research Work</a>
+          <a class="btn btn-secondary" href="#contact"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
+        </div>
+        <!-- <div class="hero-highlights">
+          <div class="mini glass">
+            <h3>500+</h3>
+            <p>Professional connections and growing presence across learning, networking, and technical communities</p>
+          </div>
+          <div class="mini glass">
+            <h3>Red Team</h3>
+            <p>Focused learning in offensive security, wireless security, hardware security, and security tool development</p>
+          </div>
+          <div class="mini glass">
+            <h3>Builder</h3>
+            <p>Hands-on projects across private cloud labs, EDR development, pentesting, forensics, and infrastructure security</p>
+          </div>
+        </div> -->
+      </div>
+
+      <div class="profile-box glass">
+        <!-- <img class="profile-img" src="/Users/manishrusty/Downloads/Subject.png" alt="Profile photo placeholder"> -->
+         <img class="profile-img" src="/Users/manishrusty/Desktop/Screenshot 2026-03-24 at 4.24.40 AM.png" alt="Manish profile photo">
+        <div class="tag-row">
+          <span class="tag">Content Engineering</span>
+          <span class="tag">Cloud Security</span>
+          <span class="tag">Security Operations</span>
+        </div>
+        <!-- <p class="profile-note">
+          Replace this image with your own photo by changing the <b>src</b> of the image tag.
+        </p> -->
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat glass"><h3>👨🏻‍🚀</h3><p>Happy to have joined @ Pwned Labs !</p></div>
+      <div class="stat glass"><h3>📚</h3><p>Lovely Professional University, Phagwara, Punjab</p></div>
+      <div class="stat glass"><h3>🚀</h3><p>Academic journey with majors in Cybersecurity</p></div>
+      <div class="stat glass"><h3>☕️</h3><p>Anime, caffeine, and break into things</p></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container reveal" id="about">
+      <h2 class="section-title">Who's Manish?</h2>
+      <div class="grid-2">
+        <div class="about-card glass">
+          <p>
+            <br>
+  I’m Manish, currently working as a Content Engineer at Pwned Labs, with a strong focus on security operations and research. I enjoy real-world systems, understanding how they break (work first), and finding the gaps that often go unnoticed.
+</p>
+<br>
+<br>
+<p style="margin-top:14px;color:var(--soft)">
+  Outside of that, I’m usually running on coffee, rewatching One Piece, or going deep into something I got curious about. I am an active member BSides 0x24 community, and Hacker MeetUps, sometimes people call me Pikachu for that constant curiosity and energy.
+</p>
+        </div>
+        <div class="about-card glass">
+          <br>
+          <h3>Why Work With Me?</h3>
+          <ul class="about-list">
+            <li>Curious by default</li>
+<li>I notice what others often miss.</li>
+<li>Quick to learn, quicker to adapt.</li>
+<li>I build, break, and REFINE.</li>
+<li>I take ownership and go deep.</li>
+<li>I focus on impact, not checklists.</li>
+<li>I stay HONEST, and ethical</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container reveal" id="skills">
+      <h2 class="section-title">My Skills</h2>
+      <div class="skills-wrap">
+        <div class="skill-card glass">
+          <h3>Security Domains</h3>
+          <ul>
+            <li><i class="fa-solid fa-user-secret"></i> AI Red Teaming</li>
+            <li><i class="fa-solid fa-wifi"></i> Cloud Security</li>
+            <li><i class="fa-solid fa-microchip"></i> Website Security Testing</li>
+            <li><i class="fa-solid fa-bug"></i> Detection Engineering</li>
+
+          </ul>
+        </div>
+        <div class="skill-card glass">
+          <h3>Infrastructure</h3>
+          <ul>
+            <li><i class="fa-solid fa-server"></i> IaC</li>
+            <li><i class="fa-brands fa-python"></i> Python</li>
+            <li><i class="fa-solid fa-terminal"></i> Bash</li>
+            <li><i class="fa-brands fa-google"></i> Googling</li>
+
+          </ul>
+        </div>
+        <div class="skill-card glass">
+          <h3>Utilities</h3>
+          <ul>
+            <li><i class="fa-solid fa-network-wired"></i> Wireshark</li>
+            <li><i class="fa-solid fa-rocket"></i> ELK Stack</li>
+            <li><i class="fa-solid fa-spider"></i> Burp Suite</li>
+            <li><i class="fa-solid fa-diagram-project"></i> Gyrok</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container reveal" id="projects">
+      <h2 class="section-title">My Work (so far...)</h2>
+      <p class="section-subtitle">These research work shows something beyond my curiosity</p>
+      <div class="project-list">
+
+        <div class="project-card glass">
+          <div class="card-top">
+            <div>
+              <h3>Adversarial AI Testing</h3>
+              <p style="color:var(--soft);margin-top:8px">This is a bit new and exciting!</p>
+            </div>
+            <span class="pill"><i class="fa-solid fa-shield-virus"></i> Reseacrch Work</span>
+          </div>
+          <ul>
+            <li>Evaluating LLM robustness against Prompt Injection and PII Leakage by applying Google’s Secure AI Framework
+(SAIF) principles.</li>
+            <li>Utilizing Garak and Microsoft PyRIT to simulate jailbreak attempts and adversarial prompts; analyzing bypass
+mechanisms in AI safety filters.</li>
+            <li>Mapping attack vectors to MITRE ATLAS and OWASP LLM Top 10 to architect SOC monitoring patterns for AIintegrated pipelines.</li>
+          </ul>
+          <div class="project-tech">
+            <span class="chip"><i class="fa-brands fa-python"></i> Python</span>
+            <span class="chip"><i class="fa-brands fa-google"></i> Google SAIF</span>
+          </div>
+        </div>
+
+        <div class="project-card glass">
+          <div class="card-top">
+            <div>
+              <h3>AWS Security Research</h3>
+              <p style="color:var(--soft);margin-top:8px">All about CloudTrail and AWS security best practices.</p>
+            </div>
+            <span class="pill"><i class="fa-brands fa-aws"></i> AWS Research</span>
+          </div>
+          <ul>
+            <li>Investigating identity-based attack vectors in AWS environments, focusing on IAM misconfigurations and privilege
+escalation techniques</li>
+            <li>AAnalyzing CloudTrail and GuardDuty logs to detect unauthorized S3 bucket enumeration and suspicious API calls.</li>
+            <li>Engineering secure cloud baselines by applying Principle of Least Privilege (PoLP) and researching cloud-native
+incident response workflows.</li>
+          </ul>
+          <div class="project-tech">
+            <span class="chip"><i class="fa-brands fa-aws"></i> AWS</span>
+            <span class="chip"><i class="fa-solid fa-shield-alt"></i> IAM</span>
+            <span class="chip"><i class="fa-solid fa-database"></i> S3</span>
+          </div>
+        </div>
+
+                <div class="project-card glass">
+          <div class="card-top">
+            <div>
+              <h3>Windows Threat Research</h3>
+              <p style="color:var(--soft);margin-top:8px">Designed advanced security solution for an advanced self-hosted environment.</p>
+            </div>
+            <span class="pill"><i class="fa-solid fa-server"></i> Infrastructure Project</span>
+          </div>
+          <ul>
+            <li>Researched advanced Windows attack vectors (Kerberoasting, Pass-the-Hash) to develop high-fidelity detection
+logic mapped to the MITRE ATT&CK framework.</li>
+            <li>Analyzed telemetry from PowerShell obfuscation and post-exploitation tools to identify "living-off-the-land" (LotL)
+techniques and unauthorized discovery</li>
+          </ul>
+          <div class="project-tech">
+            <span class="chip"><i class="fa-brands fa-ubuntu"></i> Ubuntu Server (Headless)</span>
+            <span class="chip"><i class="fa-solid fa-box"></i> Atomic Red Team</span>
+            <span class="chip"><i class="fa-solid fa-cloud-arrow-up"></i> Olaf Hartong Modular</span>
+            <span class="chip"><i class="fa-solid fa-shield-halved"></i> pfSense</span>
+          </div>
+      </div>
+    </section>
+
+    <section class="section container reveal" id="training">
+      <h2 class="section-title">Experience</h2>
+      <div class="training-card glass">
+        <div class="card-top">
+          <div>
+            <h3>Junior Security Content Engineer | PwnedLabs, Silion Oasis, Dubai </h3>
+            <p style="color:var(--soft);margin-top:8px">February 2026 - Present</p>
+          </div>
+          <span class="pill"><i class="fa-solid fa-briefcase"></i> </span>
+        </div>
+        <ul>
+          <li>Researching and developing advanced, blue-team-focused labs simulating modern cloud-native and hybrid attack
+scenarios.</li>
+          <li>Architecting scalable, multi-tier environments to host complex, hands-on scenarios while ensuring high availability
+for global users.</li>
+        </ul>
+      </div>
+    </section>
+
+<section class="section container reveal" id="certificates">
+  <h2 class="section-title">Licences</h2>
+  <p class="section-subtitle">
+  </p>
+
+  <div class="certificate-list">
+
+    <div class="certificate-card glass">
+      <h3>Certified AppSec Practitioner V2 | The SecOps Group</h3>
+      <ul>
+        <li>Issued in February 2026</li>
+        <li>Focused on application security, vulnerability assessment, and secure coding practices.</li>
+      </ul>
+    </div>
+
+    <div class="certificate-card glass">
+      <h3>CompTIA Network+ (N10-009) | CompTIA</h3>
+      <ul>
+        <li>Issued in December 2025</li>
+        <li>Built strong foundations in networking, protocols, and infrastructure security.</li>
+      </ul>
+    </div>
+
+    <div class="certificate-card glass">
+      <h3>CompTIA Security+ | CompTIA</h3>
+      <ul>
+        <li>Expected soon 👀</li>
+        <li>Let’s just say… it’s loading.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+    <section class="section container reveal" id="achievements">
+      <h2 class="section-title">Responsible Disclosure</h2>
+<div class="achievement-card glass">
+  <h3>Discovered SQL Injection in University Exam Platform</h3>
+  <p style="color:var(--soft)">
+    Identified a critical SQL injection vulnerability in the "Ebox" examination platform used for database assessments. Demonstrated how it could be used to manipulate responses and bypass evaluation logic, and responsibly disclosed it with a proper proof of concept.
+  </p>
+</div>    </section>
+
+    <section class="section container reveal" id="journey">
+  <h2 class="section-title">Odessey 🐳</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item glass">
+      <div class="timeline-date">April 2021 – March 2023</div>
+      <h3>Higher Secondary</h3>
+      <p style="color:var(--soft)">
+        Built a strong base in problem-solving during my higher secondary education with a science background.
+      </p>
+    </div>
+
+    <div class="timeline-item glass">
+      <div class="timeline-date">Since August 2023</div>
+      <h3>Started Cybersecurity Journey</h3>
+      <p style="color:var(--soft)">
+        Began B.Tech (Hons.) in Computer Science with a majors in Cybersecurity, gradually shifting focus toward hands-on security learning on real-world systems.
+      </p>
+    </div>
+
+    <div class="timeline-item glass">
+      <div class="timeline-date">December 2025</div>
+      <h3>Built Endpoint Monitoring Lab</h3>
+      <p style="color:var(--soft)">
+        Designed a multi-tier lab using Wazuh and Sysmon to simulate real-world environments and analyze endpoint-level telemetry for threat detection.
+      </p>
+    </div>
+
+    <div class="timeline-item glass">
+      <div class="timeline-date">January 2026</div>
+      <h3>Windows Threat Detection Research</h3>
+      <p style="color:var(--soft)">
+        Explored advanced attack techniques like Kerberoasting and Pass-the-Hash, focusing on detection logic and mapping behaviors to MITRE ATT&CK.
+      </p>
+    </div>
+
+    <div class="timeline-item glass">
+      <div class="timeline-date">February 2026</div>
+      <h3>Cloud & AI Security Research</h3>
+      <p style="color:var(--soft)">
+        Worked on AWS security and adversarial AI research, analyzing IAM misconfigurations, attack paths, and LLM vulnerabilities like prompt injection and data leakage.
+      </p>
+    </div>
+
+    <div class="timeline-item glass">
+      <div class="timeline-date">2026 – Present</div>
+      <h3>Junior Content Engineer – Pwned Labs</h3>
+      <p style="color:var(--soft)">
+        Contributing to cybersecurity learning and research content, while strengthening expertise in security operations, red teaming, and practical attack-defense workflows.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+    <section class="section container reveal" id="contact">
+      <h2 class="section-title">Interested? Let's Connect</h2>
+      <div class="contact-grid">
+        <div class="contact-card glass">
+          <h3>Let's Connect</h3>
+          <p style="color:var(--soft);margin-top:10px">
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:manishnayak991@outlook.com"><i class="fa-solid fa-envelope"></i> manishnayak991@outlook.com</a>
+            <a class="contact-link" href="#"><i class="fa-solid fa-location-dot"></i> Phagwara, Punjab, India</a>
+            <a class="contact-link" href="https://linkedin.com/in/secnish/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a class="contact-link" href="https://github.com/in/secnish" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a class="contact-link" href="https://medium.com/@secnish" target="_blank"><i class="fa-brands fa-medium"></i> Check Out My Articles</a>
+            <a class="contact-link" href="https://gitbook.com/@secnish" target="_blank"><i class="fa-solid fa-bug"></i> Interest in Reseacrch?</a>
+          </div>
+        </div>
+        <div class="contact-card glass">
+          <h3>Education</h3>
+          <p style="color:var(--soft);margin-top:10px">
+            <b>Lovely Professional University, Punjab</b><br>
+            Since August 2023<br>
+            B.Tech (Hons.) Cybersecurity<br>
+          </p>
+          <p style="color:var(--soft);margin-top:16px">
+            <b>Kendriya Vidyalaya, Noida, Uttar Pradesh</b><br>
+            March 2021 – March 2023<br>
+            Higher Secondary (PCM)<br>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <p>© 2026 MrSidePikachu | Made With ❤️</p>
+  </footer>
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach((item) => observer.observe(item));
+  </script>
+</body>
+</html>
